@@ -17,6 +17,7 @@ import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
 import axios from 'axios';
+import toast, { Toaster } from 'react-hot-toast';
 
 function App() {
  const [open,setOpen]=useState(false);
@@ -46,13 +47,15 @@ onSubmit: async (values, { setSubmitting, resetForm })=>{
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(values),
+      body: values,
     }); 
     console.log(response);
     resetForm();
     handleClose();
+     toast.success('Referral submitted successfully');
   } catch (error) {
    console.log(error);
+    toast.error('Failed to submit referral');
   } 
   
 },
@@ -157,6 +160,8 @@ onSubmit: async (values, { setSubmitting, resetForm })=>{
       
    
     <Footer/>
+          <Toaster />
+
     </>
   )
 }
