@@ -47,7 +47,7 @@ onSubmit: async (values, { setSubmitting, resetForm })=>{
       headers: {
         'Content-Type': 'application/json',
       },
-      body: values,
+      data: values,
     }); 
     console.log(response);
     resetForm();
