@@ -37,7 +37,7 @@ validationSchema:Yup.object({
   refereeEmail:Yup.string().email('Invalid email address').required('Required'),
   course:Yup.string().required('Required')
 }),
-onSubmit: async (values)=>{
+onSubmit: async (values, { setSubmitting, resetForm })=>{
   console.log(values);
   try {
     const response = await axios({
