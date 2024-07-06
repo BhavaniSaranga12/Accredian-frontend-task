@@ -145,9 +145,9 @@ onSubmit: async (values, { setSubmitting, resetForm })=>{
              
               label="Select Course"
             >
-              <MenuItem value="Course A">Course A</MenuItem>
-              <MenuItem value="Course B">Course B</MenuItem>
-              <MenuItem value="Course C">Course C</MenuItem>
+              <MenuItem value="Data-Science">Data Science</MenuItem>
+              <MenuItem value="Product Management">Product Management</MenuItem>
+              <MenuItem value="Machine Learning">Machine Learning</MenuItem>
               
             </Select>
           </FormControl>
