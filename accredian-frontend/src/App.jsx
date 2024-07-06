@@ -16,6 +16,8 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import * as Yup from 'yup';
 import {useFormik} from 'formik';
+import axios from 'axios';
+
 function App() {
  const [open,setOpen]=useState(false);
 
@@ -35,9 +37,24 @@ validationSchema:Yup.object({
   refereeEmail:Yup.string().email('Invalid email address').required('Required'),
   course:Yup.string().required('Required')
 }),
-onSubmit: (values)=>{
+onSubmit: async (values)=>{
   console.log(values);
-  handleClose();
+  try {
+    const response = await axios({
+      method:'post',
+      url:'https://accredian-backend-task-4bfu.onrender.com/api/referral',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    }); 
+    console.log(response);
+    resetForm();
+    handleClose();
+  } catch (error) {
+   console.log(error);
+  } 
+  
 },
 
 })
@@ -137,7 +154,7 @@ onSubmit: (values)=>{
           <Button variant="contained" color="primary" onClick={formik.handleSubmit} fullWidth>Submit</Button>
         </Box>
       </Modal>
-       <div>hhh</div>
+      
    
     <Footer/>
     </>
